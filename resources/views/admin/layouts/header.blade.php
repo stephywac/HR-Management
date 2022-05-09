@@ -6,8 +6,8 @@
 		<!--end::Aside mobile toggle-->
 		<!--begin::Mobile logo-->
 		<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-			<a href="/metronic8/demo1/../demo1/index.html" class="d-lg-none">
-				<img alt="Logo" src="/metronic8/demo1/assets/media/logos/logo-2.svg" class="h-30px" />
+			<a href="{{url('/home')}}" class="d-lg-none">
+				<img alt="Logo" src="{{url('/home')}}" class="h-30px" />
 			</a>
 		</div>
 		<!--end::Mobile logo-->

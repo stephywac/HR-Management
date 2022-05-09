@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-class AdminCheck
+class CandidateCheck
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminCheck
     {
         if(Auth::user())
         {
-            if (Auth::user()->id==1) { 
+            if (Auth::user()->id!=1) { 
                 return $next($request);
             }
             else{
@@ -26,8 +26,6 @@ class AdminCheck
             }
         }
         return redirect('/login');
-        
-        
         
        
     }

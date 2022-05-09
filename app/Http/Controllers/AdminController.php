@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 class AdminController extends Controller
 {
     /**
@@ -13,7 +14,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-       return view('admin.dashboard');
+        $UsersLists =  User:: select ('*')
+                ->where('id', '!=' , 1)
+                ->get();
+         $count=count($UsersLists); 
+         //dd( $count);      
+       return view('admin.dashboard',compact('UsersLists','count'));
     }
 
     public function login()

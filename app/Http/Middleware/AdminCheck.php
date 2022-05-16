@@ -17,7 +17,7 @@ class AdminCheck
     {
         if(Auth::user())
         {
-            if (Auth::user()->id==1) { 
+            if (Auth::user()->user_type==1) { 
                 return $next($request);
             }
             else{

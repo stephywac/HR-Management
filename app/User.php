@@ -36,4 +36,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_types()
+{
+    return $this->hasOne('App\UserType', 'id', 'user_type');
+
+}
+
+    public function user_designation()
+    {
+        return $this->hasOne('App\Designation', 'id', 'designation_id');
+    
+    }
+
+    public function user_department()
+    {
+        return $this->hasOne('App\Department', 'id', 'department_id');
+    
+    }
+
 }

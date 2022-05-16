@@ -6,6 +6,7 @@
     <title>Online IDE</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{asset('assets/ide/css/style.css')}}" />
+    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.png')}}" />
 </head>
 
 <body>

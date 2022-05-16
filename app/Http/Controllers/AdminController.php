@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Illuminate\Support\Facades\Hash;
+
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $UsersLists =  User:: select ('*')
@@ -101,14 +99,28 @@ class AdminController extends Controller
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
            
-            if (auth()->user()->id == 1) {
-                return redirect()->route('home');
-            }else{
-              return redirect()->route('candidate');
-            }
+            return redirect()->route('home'); 
         }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+           
+            if(!User::where('email', '=', $request->email)->exists() )
+            {
+                return redirect()->route('login')
+                ->with('error',' Incorrect Email-Address.');
+            }
+           
+            else if(User::where('email', '=', $request->email)->exists() && !User::where('password', '=', Hash::make($request->password))->exists() )
+            { 
+                return redirect()->route('login')
+                ->with('error','Password  incorrect.');
+            }
+            else 
+            {
+                return redirect()->route('login')
+                ->with('error','Email-Address and password  Are Wrong.');
+            }
+
+
+           
         }
       }
         

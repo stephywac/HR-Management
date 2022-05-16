@@ -4,32 +4,34 @@ use Illuminate\Database\Seeder;
 
 class DesignationSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    
     public function run()
     {
+        App\Designation::truncate();
+       
         App\Designation::create([
             'name' => 'Web Developer',
             'slug' => 'web_developer',
-            'status'=>'1'
+            'status'=>'1',
+            'department_id'=>1
         ]);
         App\Designation::create([
             'name' => 'Web Designer',
             'slug' => 'web_designer',
-            'status'=>'1'
+            'status'=>'1',
+            'department_id'=>2
         ]);
         App\Designation::create([
-            'name' => 'Tester',
+            'name' => 'Digital marketing',
             'slug' => 'tester',
-            'status'=>'1'
+            'status'=>1,
+            'department_id'=>4
         ]);
         App\Designation::create([
-            'name' => 'Seo ',
-            'slug' => 'seo',
-            'status'=>'1'
+            'name' => 'flutter ',
+            'slug' => 'flutter',
+            'status'=>'1',
+            'department_id'=>3 
         ]);
 
     }
